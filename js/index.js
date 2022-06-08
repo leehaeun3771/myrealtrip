@@ -43,6 +43,9 @@ $(function(){
     var img = $('.cntWrap.cnt04 section .imgGroup');
     var li = $('.cntWrap.cnt04 ul.paging li');
 
+    li.eq(0).addClass().css('background-color', '#005194');
+    li.eq(0).addClass('on4');
+
     // 왼쪽버튼
     function leftSlide(){
         i++
