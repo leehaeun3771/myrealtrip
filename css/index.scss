@@ -1,0 +1,937 @@
+$h2:#{'min(2.7em, 27px)'};
+$h3:#{'min(2.5em, 25px)'};
+$h4:#{'min(1.7em, 17px)'};
+$h5:#{'min(1.3em, 13px)'};
+$li:#{'min(1.5em, 15px)'};
+$plh:#{'min(0.5rem, 20px)'};
+$lh:#{'min(1rem, 40px)'};
+$h:#{'min(2rem, 80px)'};
+$wmt:#{'min(3rem, 120px)'};
+
+@mixin grid($win) {
+    @if($win == 'mob'){
+    width: 90%;
+    max-width: 420px;
+    margin: 0 auto;
+    }@else{
+        width: 80%;
+        max-width: 1080px;
+        margin: 0 auto;
+    }
+}
+@mixin fl {
+    display: flex;
+    justify-content: space-between;   
+}
+@mixin bg {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+@mixin ff($fontname, $url) {
+    @font-face {
+        font-family: #{$fontname};
+        src: url('./fonts/#{$url}') format('truetype');
+    }  
+}
+
+@include ff(xe, 'xeicon.ttf');
+@include ff(dut, 'dutchb.ttf');
+@include ff(dutl, 'dutch.ttf');
+@include ff(tw, 'tway_air.ttf');
+@include ff(Thin, 'NotoSansKR-Thin.otf');
+@include ff(Light, 'NotoSansKR-Light.otf');
+@include ff(Regular, 'NotoSansKR-Regular.otf');
+@include ff(Medium, 'NotoSansKR-Medium.otf');
+@include ff(Bold, 'NotoSansKR-Bold.otf');
+
+@mixin mobile{
+    @media (max-width:1024px) and (min-width:0px){
+        @content;         
+    }
+}
+
+@mixin mobile{
+    @media (max-width:420px) and (min-width:0px){
+        @content;         
+    }
+}
+
+html{
+    font-size: 3vw;
+    @include mobile{
+        font-size: 9.5vw;
+    }
+
+    body{
+        font-size: 0.7vw;
+        overflow-x: hidden;
+        @include mobile{
+            font-size: 2.4vw;
+        }
+    }
+}
+
+body .image{
+    cursor: pointer;
+}
+
+// 헤더
+.hdrWrap{
+    .header{
+        @include grid('pc');
+        padding-top: $plh;
+        padding-bottom: $plh;
+        @include fl;
+        .hdrLeft{
+            @include fl;    
+            width: calc(100% / 12 * 9);
+            .logo{
+                @include bg;
+                width: calc(100% / 9 * 1.7);
+                background-image: url('../images/main/logo.png');
+                height: $lh;
+                background-size: cover;
+                cursor: pointer;
+            }
+            input{
+                width: calc(100% / 9 * 1.8);
+                border: 1px solid lightgray;
+                border-radius: $plh;
+                line-height: $lh;
+                height: $lh;
+                text-align: left;
+                padding-left: #{'min(0.25rem, 10px)'};
+                font-family: 'xe';
+                font-size: $h4;
+                color: #666;
+                cursor: pointer;
+            }
+            i{
+                margin-left: #{'min(-1rem, -40px)'};
+                line-height: $lh;
+                height: $lh;
+                font-size: $h4;
+                font-family: 'xe';
+                color: #666
+            }
+            ul{
+                @include fl;
+                width: calc(100% / 9 * 5);
+                margin-left: #{'min(0.25rem, 10px)'};
+                li{
+                    line-height: $lh;
+                    height: $lh; 
+                    font-size: $li;
+                    font-family: 'light';
+                    cursor: pointer;
+                    &.on0{
+                        font-weight: 700;
+                        color: #222;
+                    }
+                }
+            }
+        }
+        .hdrRight{
+            @include fl;
+            width: calc(100% / 12 * 1.2);
+            h4{
+                cursor: pointer;
+                font-size: $li;
+                line-height: $lh;
+                font-family: 'light';
+                &.on0{
+                    font-weight: 700;
+                    color: #222;
+                }
+            }
+            .btn{
+                width: $lh;
+                font-family: 'xe';
+                font-size: $h4;
+                line-height: $lh;
+                height: $lh;
+                border: 1px solid lightgray;
+                border-radius: 50%;
+                text-align: center;
+                margin-left: #{'min(0.5em, 5px)'};
+                color: #666;
+                cursor: pointer;
+                &.on0{
+                    font-weight: 700;
+                    color: #222;
+                }
+            }
+        }
+
+    }
+}
+
+// 메인
+.mainWrap{
+    width: 100vw;
+    main{
+        .image{
+            @include bg;
+            background-image: url('../images/main/main\ 01.png');
+            height: #{'min(18rem, 720px)'};
+        }
+    }
+}
+
+// 배너
+.bnrWrap.bnr01{
+    .banner.bnr01{
+        @include grid('pc');
+        .textBox{
+            width: 100%;
+            margin: 0 auto;
+            margin-top: #{'min(-4.5rem, -180px)'};
+            padding-top: #{'min(1.5rem, 60px)'};
+            padding-bottom: $h;
+            padding-right: $h;
+            padding-left: $h;
+            background-color: #fff;
+            border-radius: $plh;
+            box-shadow: #ccc 1px 5px 10px;
+            .txtTop{
+                width: calc(100% / 12 * 4);
+                margin: 0 auto;
+                ul{
+                    @include fl;
+                    li{
+                        width: calc(100% / 3);
+                        font-size: #{'min(1.9em, 19px)'};
+                        font-family: 'tw';
+                        line-height: $lh;
+                        height: $lh;
+                        margin: 0 auto;
+                        text-align: center;
+                        cursor: pointer;
+                        &.on1::after{
+                            content: '';
+                            display: block;
+                            width: 70%;
+                            margin: 0 auto;
+                            border-bottom: 3px solid #40a7f1;
+                            border-radius: 2px;
+                        }
+                    }
+                }
+
+            }
+            .txtMid{
+                margin-top: #{'min(0.75rem, 30px)'};
+                margin-bottom: #{'min(0.75rem, 30px)'};
+                font-family: 'regular';
+                .btns{
+                    @include fl; 
+                    width: calc(100% / 12 * 4);   
+                    .btn{
+                        width: calc(100% / 4 - 10px);
+                        border: 1px solid lightgray;
+                        border-radius: 10px;
+                        text-align: center;
+                        line-height: #{'min(0.75rem, 28px)'};
+                        height: #{'min(0.75rem, 30px)'};
+                        font-size: #{'min(1.4em, 14px)'};
+                        transition: all 0.3s;
+                        cursor: pointer;
+                        &.on2{
+                            background-color: #40a7f1;
+                            border: 1px solid #40a7f1;
+                            color: white;
+                        }
+                    }
+                    .checkBox{
+                        @include fl;
+                        line-height: #{'min(0.75rem, 28px)'};
+                        height: #{'min(0.75rem, 30px)'};
+                        input{
+                            height: #{'min(2.7em, 27px)'};
+                            cursor: pointer;
+                        }
+                        h4{
+                            font-size: $h5;
+                            line-height: #{'min(0.75rem, 30px)'};
+                            height: #{'min(0.75rem, 30px)'};
+                        }
+                    }
+                }
+            }
+            .txtBtm{
+                @include fl;
+                .bnrArt{
+                    width: calc(100% / 4 - 10px);
+                    margin: 0 5px;
+                    h3{
+                        line-height: $lh;
+                        height: $lh;
+                        font-size: #{'min(1.5em, 15px)'};
+                        font-family: 'light';
+                    }
+                    input{
+                        width: 100%;
+                        margin: 0 auto;
+                        padding-left: 10px;
+                        border: 1px solid lightgray;
+                        line-height: $lh;
+                        height: $lh;
+                        border-radius: 5px;
+                        color: #666;
+
+                    }
+                    i{
+                        font-family: 'xe';
+                        font-size: $h4;
+                        margin-left: -30px;
+                        line-height: $lh;
+                        height: $lh;
+                        color: #222;
+                        cursor: pointer;
+                    }
+                    &:nth-last-child(2){
+                        input{
+                            width: 100%;
+                            margin: 0 auto;
+                            line-height: $lh;
+                            height: $lh;
+                            margin-top: #{'min(3em, 3px)'};
+                            cursor: pointer;
+                        }
+                    }
+                    &:nth-last-child(1){
+                        @include fl;
+                        justify-content: left;
+                        .artLeft{
+                            width: 60%;
+                            margin: 0 auto;
+                        }
+                        .artRight{
+                            width: 35%;
+                            margin: 0 auto;
+                            margin-top: #{'min(4.3em, 43px)'};
+                            input{
+                                padding: 0px;
+                                cursor: pointer;
+                                &:hover{
+                                    background-color: #40a7f1;
+                                    border: 1px solid #40a7f1;
+                                    color: white;
+                                }
+                            }
+                        }
+                    }
+                }
+                .btn{
+                    width: calc(100% /12 * 1);
+                    margin: 0 auto;
+                    text-align: center;
+                    font-size: $h4;
+                    font-family: 'xe';
+                    margin-top: $lh;
+                    line-height: $lh;
+                    height: $lh;
+                }
+
+            }
+        }
+    }
+}
+
+// 컨텐츠1
+.cntWrap.cnt01{
+    .content.cnt01{
+        width: 100vw;
+        margin: 0 auti;
+        margin-top: $wmt;
+        header{
+            h2{
+                font-size: $h2;
+                line-height: $lh;
+                height: $lh;
+                font-family: 'tw';
+                text-align: center;
+                span{
+                    color: #40a7f1;
+                }
+            }
+        }
+        section{
+            margin-top: $h;
+            .artView{
+                width: 90%;
+                margin: 0 auto;
+                overflow: hidden;
+                .artGroup{
+                    width: 300%;
+                    @include fl;    
+                    article{
+                        width: calc(100% / 5 - (#{'min(0.5rem, 20px)'}));
+                        margin: 0 #{'min(0.25rem, 10px)'};
+                        .image{
+                            @include bg;
+                            height: #{'min(11rem, 440px)'};
+                            border-radius: #{'min(0.25rem, 10px)'};
+                            @for $i from 1 through 15{
+                                &.i#{$i}{
+                                    background-image: url('../images/main/cnt02\ -\ 00#{$i}.png');
+                                }
+                            }
+                            border-radius: 20px;
+                            &.show1{
+                                filter: brightness(0.55);
+                            }
+
+                        }
+                        .texts{
+                            padding: #{'min(1.5rem, 60px)'} $plh;
+                            padding-bottom: $lh;
+                            border-radius: #{'min(0.25rem, 10px)'};
+                            margin-top: #{'min(-8rem, -320px)'};
+                            display: none;
+                            &.show2{
+                                position: relative;
+                                display: block;
+                                z-index: 999;
+                            }
+                            h3{
+                                font-size: #{'min(2.1em, 21px)'};
+                                line-height: $lh;
+                                height: $h;
+                                font-family: 'tw';
+                                color: #fff;
+                            }
+                            .btn{
+                                margin-top: #{'min(5.5rem, 220px)'};
+                                line-height: $lh;
+                                height: $lh;
+                                width: 65%;
+                                text-align: center;
+                                font-size: $li;
+                                font-family: 'tw';
+                                text-align: center;
+                                color: #666;
+                                background-color: #fff;
+                                border-radius: #{'min(0.25rem, 10px)'};
+                                &:hover{
+                                    background-color: #40a7f1;
+                                    border: 1px solid #40a7f1;
+                                    color: white;
+                                }
+                            }
+
+                        }
+                    }
+                }
+            }
+            ul.paging{
+                @include fl;
+                width: 5%;
+                margin: 0 auto;
+                margin-top: $lh;
+                text-align: center;
+                li{
+                    width: #{'min(1.2em, 12px)'};
+                    height: #{'min(1.2em, 12px)'};
+                    background-color: #ccc;
+                    border-radius: 50%;
+                    line-height: $lh;
+                    margin-top: #{'min(0.3em, 3px)'};
+                    cursor: pointer;
+                    &.on3{
+                        background-color: #40a7f1;
+                        width: #{'min(1.8em, 18px)'};
+                        height: #{'min(1.8em, 18px)'};
+                        line-height: $lh;
+                        margin: 0px #{'min(0.2em, 2px)'};
+                    }
+                    &:nth-child(1){
+                        background-color: #40a7f1;
+                        width: #{'min(1.8em, 18px)'};
+                        height: #{'min(1.8em, 18px)'};
+                        line-height: $lh;
+                        margin: 0px #{'min(0.2em, 2px)'};
+                    }
+                }
+            }
+        }
+    }
+}
+
+// 컨텐츠2
+.cntWrap.cnt02{
+    .content.cnt02{
+        @include grid('pc');
+        margin-top: $wmt;
+        header{
+            h2{
+                text-align: center;
+                font-family: 'tw';
+                font-size: $h2;
+                line-height: $lh;
+                height: $lh;
+                span{
+                    color: #40a7f1;
+                }
+            }
+        }
+        section{
+            margin-top: $h;
+            .artTop{
+                width: 100%;
+                margin: 0 auto;
+                height: #{'min(16rem, 640px)'};
+                position: relative;
+                .image{
+                    @include bg;
+                    background-image: url('../images/main/cnt03\ -\ 001.png');
+                    height: #{'min(16rem, 640px)'};
+                    cursor: pointer;
+                }
+                .texts{
+                    cursor: pointer;
+                    width: calc(100% / 12 * 9);
+                    margin: 0 auto;
+                    text-align: center;
+                    color: #fff;
+                    position: absolute;
+                    right: 0; left: 0%; bottom: $lh;
+                    h3{
+                        font-size: $h3;
+                        font-family: 'tw';
+                        line-height: $lh;
+                        height: $lh;
+                    }
+                    p{
+                        margin-top: #{'min(0.25rem, 10px)'};
+                        font-size: $h4;
+                        font-family: 'regular';
+                        line-height: $lh;
+                        height: $h;
+
+                    }
+                }
+                .btn{
+                    @include bg;
+                    background-image: url('../images/main/cnt03-01-btn.png');
+                    width: $h;
+                    margin: 0 auto;
+                    height: $h;
+                    border-radius: 50%;
+                    position: absolute;
+                    right: 0; left: 0%; bottom: #{'min(-3.0em, -30px)'};
+                    cursor: pointer;
+                }
+            }
+            .artBtm{
+                @include fl;
+                margin-top: $h;
+                article{
+                    width: calc(100% / 3 - (#{'min(0.5rem, 20px)'}));
+                    margin: 0 #{'min(0.25rem, 10px)'};
+                    height: #{'min(10.5rem, 420px)'};
+                    .image{
+                        @include bg;
+                        height: #{'min(10.5rem, 420px)'};
+                        cursor: pointer;
+                    }
+                    .image.i1{
+                        background-image: url('../images/main/cnt03\ -\ 002.png');
+                    }
+                    .image.i2{
+                        background-image: url('../images/main/cnt03\ -\ 003.png');
+                    }
+                    .image.i3{
+                        background-image: url('../images/main/cnt03\ -\ 004.png');
+                    }
+                    .texts{
+                        cursor: pointer;
+                        width: 82%;
+                        margin: 0 auto;
+                        font-family: 'tw';
+                        margin-top: #{'min(-2.75rem, -110px)'};
+                        color: #fff;
+                        h3{
+                            font-size: #{'min(1.9em,19px)'};
+                            line-height: $lh;
+                            height: $lh;
+                        }
+                        p{
+                            margin-top: $plh;
+                            font-size: $h4;
+                            line-height: #{'min(0.75rem, 30px)'};
+                            height: $lh;
+                            font-family: 'medium';
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+// 컨텐츠3
+.cntWrap.cnt03{
+    .content.cnt03{
+        width: 100vw;
+        margin: 0 auto;
+        margin-top: $wmt;
+        header{
+            h2{
+                font-size: $h2;
+                line-height: $lh;
+                height: $lh;
+                text-align: center;
+                font-family: 'tw';
+
+            }
+        }
+        section{
+            width: 90%;
+            margin: 0 auto;
+            margin-top: $h;
+            @include fl;
+            .artLeft{
+                width: 50%;
+                article{
+                    height: #{'min(13rem, 520px)'};
+                    position: relative;
+                    .image{
+                        @include bg;
+                        background-size: contain;
+                        background-image: url('../images/main/cnt04-\ 01.png');
+                        height: #{'min(13rem, 520px)'};
+                    }
+                    .btn{
+                        width: 18%;
+                        line-height: $lh;
+                        height: $lh;
+                        background-color: #fff;
+                        border-radius: #{'min(0.25rem, 10px)'};
+                        text-align: center;
+                        font-size: $li;
+                        position: absolute;
+                        right: $plh;
+                        bottom: $lh;
+                        font-family: 'regular';
+                        color: #666;
+                        cursor: pointer;
+                        transition: all 0.3s;
+                        &:hover{
+                            background-color: #40a7f1;
+                            color: #fff;
+                        }
+                    }
+
+                }
+            }
+            .artRight{
+                width: 50%;
+                height: #{'min(13rem, 520px)'};
+                article{
+                    height: #{'min(13rem, 520px)'};
+                    position: relative;
+                    .image{
+                        @include bg;
+                        background-size: contain;
+                        background-image: url('../images/main/cnt04-\ 02.png');
+                        height: #{'min(13rem, 520px)'};
+                    }
+                    .btn{
+                        width: 18%;
+                        line-height: $lh;
+                        height: $lh;
+                        background-color: #fff;
+                        border-radius: #{'min(0.25rem, 10px)'};
+                        text-align: center;
+                        font-size: $li;
+                        position: absolute;
+                        left: $plh;
+                        bottom: $lh;
+                        font-family: 'regular';
+                        color: #666;
+                        cursor: pointer;
+                        transition: all 0.3s;
+                        &:hover{
+                            background-color: #40a7f1;
+                            color: #fff;
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+}
+
+// 컨텐츠4
+.cntWrap.cnt04{
+    .content.cnt04{
+        width: 100vw;
+        margin: 0 auto;
+        margin-top: $wmt;
+        position: relative;
+        height: #{'min(17rem, 680px)'};
+        header{            
+            h2{
+                font-size: $h2;
+                line-height: $lh;
+                height: $lh;
+                text-align: center;
+                font-family: 'tw';
+                span{
+                    color: #40a7f1;
+                }
+            }
+        }
+        section{
+            @include grid('pc');
+            margin-top: $h;
+            position: relative;
+            height: #{'min(11rem, 440px)'};
+            .imgView{
+                position: absolute;
+                width: calc(100% / 12 * 8);
+                top: 0;
+                right: 0;
+                overflow: hidden;
+                .imgGroup{
+                    width: 500%;
+                    @include fl;
+                    .image{
+                        width: calc(100% / 5);
+                        height: #{'min(11rem, 440px)'};
+                        @include bg;
+                        border-radius: $plh;
+                        @for $i from 1 through 5{
+                            &.i#{$i}{
+                                background-image: url('../images/main/cnt\ 05\ -\ 0#{$i}.png');
+                            }
+                        }
+                    }
+                }
+            }
+            .txtView{
+                width: calc(100% / 12 * 5);
+                position: absolute;
+                left: 0;
+                top: #{'min(1.5rem, 60px)'};
+                z-index: 50;
+                overflow: hidden;
+                .txtGroup{
+                    width: 500%;
+                    @include fl;
+                    .texts{
+                        width: calc(100% / 5);
+                        height: #{'min(8rem,320px)'};
+                        background-color: #005194;
+                        padding-top: #{'min(1.5rem, 60px)'};
+                        padding-left: $lh;
+                        border-radius: $plh;
+                        &:nth-child(2){
+                            background-color: #ffd24b;
+                        }
+                        &:nth-child(3){
+                            background-color: #92cb63;
+                        }
+                        &:nth-child(4){
+                            background-color: #9baae5;
+                        }
+                        &:nth-child(5){
+                            background-color: #4abec1;
+                        }
+                        h3{
+                            font-size: $h2;
+                            color: #fff;
+                            line-height: #{'min(1.5rem, 60px)'};
+                            font-family: 'tw';
+                        }
+                    }
+                }
+            }
+            .btns{
+                position: absolute;
+                left: #{'min(7.5rem, 300px)'};
+                bottom: #{'min(2.5rem, 100px)'};
+                z-index: 999;
+                @include fl; 
+                width: 11%;   
+                .btn{
+                    width: #{'min(0.75rem, 30px)'};
+                    font-size: #{'min(1.9em, 19px)'};
+                    line-height: #{'min(2.7em, 27px)'};
+                    height: #{'min(0.75rem, 30px)'};
+                    margin: 0 3px;
+                    text-align: center;
+                    color: #fff;
+                    border: 2px solid #fff;
+                    border-radius: 50%;
+                    font-family: 'xe';
+                    &:nth-child(3){
+                        display: none;
+                    }
+                }
+            }
+            ul.paging{
+                position: absolute;
+                bottom: 10px;
+                left: 130px;
+                @include fl;
+                width: calc(100% / 12 * 1.4);
+                li{
+                    width: #{'min(1.2em, 12px)'};
+                    height: #{'min(1.2em, 12px)'};
+                    background-color: #fff;
+                    border-radius: 50%;
+                    line-height: $lh;
+                    margin-top: #{'min(0.3em, 3px)'};
+                    &.on4{
+                        // background-color: #40a7f1;
+                        width: #{'min(1.8em, 18px)'};
+                        height: #{'min(1.8em, 18px)'};
+                        margin: 0 2px;
+
+                    }
+                }
+            }
+        }
+        .bgimage{
+            width: 100vw;
+            background-color: #d9edfc;
+            // opacity: 0.2;
+            height: #{'min(9rem, 360px)'};
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            z-index: -999;
+        }
+    }
+}
+
+// 푸터
+.ftrWrap{
+    footer{
+        @include grid('pc');
+        margin-top: $wmt;   
+        .ftrTop{
+            margin: 0 auto;
+            margin-top: $lh;
+            text-align: center;
+            .logo{
+                cursor: pointer;
+                @include bg;
+                background-image: url('../images/main/logo.png');
+                height: #{'min(1rem, 40px)'};
+                background-size: contain;
+            }
+            .btns{
+                @include fl;
+                width: calc(100% / 12 * 2.5);
+                margin: 0 auto;
+                margin-top: $plh;
+                .image{
+                    cursor: pointer;
+                    width: 100%;
+                    margin: 0 2px;
+                    @include bg;
+                    height: #{'min(1rem, 40px)'};
+                    @for $i from 1 through 4{
+                        &.i#{$i}{
+                            background-image: url('../images/main/footer\ icon\ 0#{$i}.png');
+                        }
+                    }
+                    background-size: contain;
+
+                }
+            }
+        }
+        .ftrBtm{
+            width: 100%;
+            @include fl; 
+            margin-top: $h; 
+            margin-bottom: $lh;  
+            padding-bottom: 50px;
+            color: #666;
+            h4{
+                font-family: 'regular';
+                font-size: $h5;
+                line-height: $lh;
+                height: $lh;
+                color: #222;
+            }
+            .ftrLeft{
+                width: calc(100% / 12 * 4 );
+                font-family: 'regular';
+                font-size: $h5;
+                line-height: $lh;
+                height: $lh;
+                padding-left: $lh;
+                h5{
+                    line-height: $lh;
+                    height: $lh;
+                }
+            }
+            .ftrMid{
+                width: calc(100% / 12 * 3.5);
+                font-family: 'regular';
+                font-size: $h5;
+                line-height: $lh;
+                height: $lh;
+                h5{
+                    line-height: $lh;
+                    height: $lh;
+                }
+            }
+            .ftrRight{
+                cursor: pointer;
+                width: calc(100% / 12 * 3);
+                font-family: 'regular';
+                font-size: $h5;
+                line-height: $lh;
+                height: $lh;
+                text-align: right;
+                h5{
+                    line-height: $lh;
+                    height: $lh;
+                    &:hover{
+                        color: black;
+                    }
+                }
+                select{
+                    margin-left: auto;
+                }
+                ul{
+                    @include fl;    
+                    li{
+                    }
+                }
+            }
+        }
+    }
+}
+
+// 탑버튼
+.fixBtns{
+    position: fixed;
+    right: 0;
+    top: #{'min(8rem, 320px)'};
+    z-index: 999;
+    .fixBtn{
+        width: #{'min(3rem,120px)'};
+        line-height: $h;
+        height: $h;
+        .image{
+            margin-top: 10px;
+            line-height: $h;
+            height: $h;
+            @include bg;
+            @for $i from 1 through 3{
+                &.i#{$i}{
+                    background-image: url('../images/main/fix\ icon\ 0#{$i}.png');
+                }
+            }
+
+        }
+    }
+}
